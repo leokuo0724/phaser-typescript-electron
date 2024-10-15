@@ -10,3 +10,7 @@ app/
 
 # Build
 dist/
+
+# Env files
+env.*.json
+env.json

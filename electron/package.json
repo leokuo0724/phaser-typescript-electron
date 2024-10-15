@@ -7,11 +7,11 @@
   "scripts": {
     "copy": "yarn --cwd ../client build && node ./scripts/copy-from-client.js",
     "electron": "electron .",
-    "dev": "yarn --cwd ../client dev --host & yarn electron",
-    "preview": "yarn copy && yarn electron",
+    "dev": "cp env.dev.json env.json && yarn --cwd ../client dev --host & yarn electron",
+    "preview": "cp env.prod.json env.json && yarn copy && yarn electron",
     "app:dir": "electron-builder --dir",
     "app:dist": "electron-builder",
-    "build": "yarn copy && yarn app:dist"
+    "build": "cp env.prod.json env.json && yarn copy && yarn app:dist"
   },
   "devDependencies": {
     "electron": "^21.0.0",

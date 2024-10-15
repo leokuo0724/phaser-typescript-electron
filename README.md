@@ -15,30 +15,42 @@ The project folder structure is:
 - **electron**: the electron project.
 
 ## Instructions
+
 Execute inside relative folder **client** and **electron** `yarn` or `npm install` to install all dependencies required.
 
 ### &#128193; Client folder
+
 Inside **client** folder you can run Phaser with Typescript, Rollup and Vite but without Electron.
 
-| Command | Description |
-|---------|-------------|
-| `yarn` or `npm install` | Install project dependencies |
-| `yarn dev` or `npm run dev` | Builds project and open web server, watching for changes |
-| `yarn build` or `npm run build` | Builds code bundle with production settings  |
-| `yarn serve` or `npm run serve` | Run a web server to serve built code bundle |
+| Command                         | Description                                              |
+| ------------------------------- | -------------------------------------------------------- |
+| `yarn` or `npm install`         | Install project dependencies                             |
+| `yarn dev` or `npm run dev`     | Builds project and open web server, watching for changes |
+| `yarn build` or `npm run build` | Builds code bundle with production settings              |
+| `yarn serve` or `npm run serve` | Run a web server to serve built code bundle              |
 
 ### &#128193; Electron folder
-Inside **electron** folder you can run Electron with Phaser! You can run in dev mode or production mode for the final preview and release. 
+
+Inside **electron** folder you can run Electron with Phaser! You can run in dev mode or production mode for the final preview and release.
 
 **&#128293;&#128293; HOT RELOAD INCLUDED! &#128293;&#128293;**
 
-| Command | Description |
-|---------|-------------|
-| `yarn` | Install project dependencies |
-| `yarn dev` | Builds project and open web server from client folder and Electron, **watching for changes** |
-| `yarn preview` | Starts a preview for a final release  |
-| `yarn build`| Build app with Electron |
+| Command        | Description                                                                                  |
+| -------------- | -------------------------------------------------------------------------------------------- |
+| `yarn`         | Install project dependencies                                                                 |
+| `yarn dev`     | Builds project and open web server from client folder and Electron, **watching for changes** |
+| `yarn preview` | Starts a preview for a final release                                                         |
+| `yarn build`   | Build app with Electron                                                                      |
 
-### TODO
+### Environment files
 
-- Better manage of process.env
+Create `env.dev.json`, `env.prod.json` and `env.json` into electron folder.<br><br>
+When starting app with `yarn dev` command, it will copy settings from `env.dev.json` to `env.json`.<br><br>
+On the other hand, starting app with `yarn preview` and `yarn build` will copy settings from `env.prod.json`.
+
+```
+|- electron
+|-- env.dev.json
+|-- env.json
+|-- env.prod.json
+```

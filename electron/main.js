@@ -6,8 +6,8 @@ require("@electron/remote/main").initialize();
 
 process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
-
+const appEnv = require("./env.json");
+const isDevelopment = appEnv.env !== "production";
 
 const createWindow = () => {
   // Create the browser window.
@@ -26,11 +26,14 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   //mainWindow.loadFile(__dirname, "./app/index.html")
-  if (!isDevelopment) mainWindow.loadURL('file://' + path.join(__dirname, '..') + '/electron/app/index.html');
-  else mainWindow.loadURL('http://localhost:3000');
+  if (!isDevelopment)
+    mainWindow.loadURL(
+      "file://" + path.join(__dirname, "..") + "/electron/app/index.html"
+    );
+  else mainWindow.loadURL("http://localhost:3000");
 
   // Open the DevTools.
-  if (isDevelopment) mainWindow.webContents.openDevTools()
+  if (isDevelopment) mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
